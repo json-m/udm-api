@@ -68,7 +68,7 @@
 | topology/TopologyController                             | no          | no     |
 | trafficroute/TrafficRouteController                     | yes         | yes    |
 | trafficrule/TrafficRuleController                       | no          | no     |
-| trafficstats/TrafficOverviewController                  | no          | no     |
+| trafficstats/TrafficOverviewController                  | yes         | no     |
 | ucore/UcoreInfoController                               | no          | no     |
 | uisp/UispController                                     | no          | no     |
 | utilization/UtilizationInfoController                   | no          | no     |

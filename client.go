@@ -127,6 +127,7 @@ func (c *Client) login() error {
 			// wait 5 minutes
 			rerr := c.refreshToken()
 			if rerr != nil {
+				// TODO: improve this, try to login again - if fail, why? how to recover? etc
 				log.Fatalln("Failed to refresh token:", rerr)
 			}
 			time.Sleep(5 * time.Minute)
