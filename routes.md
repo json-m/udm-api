@@ -31,7 +31,7 @@
 | hotspot/HotspotController                               | no          | no     |
 | info/InfoController                                     | no          | no     |
 | insight/filtering/FilteringInsightsController           | no          | no     |
-| isp/IspController                                       | no          | no     |
+| isp/IspController                                       | yes         | kinda  |
 | lan/LanConfigurationController                          | no          | no     |
 | lcm/LcmController                                       | no          | no     |
 | log/LogConfigurationController                          | no          | no     |
