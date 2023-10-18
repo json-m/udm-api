@@ -1,7 +1,7 @@
 ## UDM-API
 
 usage example:
-```
+```golang
 // create client
 client, _ := udm_api.CreateClient(
     "apiuser",             // user
