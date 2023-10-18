@@ -6,7 +6,7 @@
 | FingerprintDeviceListController                         | no          | no     |
 | FingerprintOverrideController                           | no          | no     |
 | IpsAlertsController                                     | no          | no     |
-| NetworkStatusController                                 | no          | no     |
+| NetworkStatusController                                 | yes         | yes    |
 | NetworkSuggestController                                | no          | no     |
 | SearchController                                        | no          | no     |
 | SpeedTestController                                     | no          | no     |
@@ -38,7 +38,7 @@
 | magicsitetositevpn/MagicSiteToSiteVpnController         | no          | no     |
 | notification/NotificationController                     | no          | no     |
 | pingtest/PingTestController                             | no          | no     |
-| poe/PoeController                                       | no          | no     |
+| poe/PoeController                                       | yes         | yes    |
 | port/PortForwardController                              | no          | no     |
 | port/PortProfileController                              | no          | no     |
 | radius/RadiusController                                 | no          | no     |
