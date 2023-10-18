@@ -42,14 +42,14 @@ type ClientStruct struct {
 	IsWired                             bool                    `json:"is_wired,omitempty"`
 	LastSeen                            int                     `json:"last_seen,omitempty"`
 	LatestAssocTime                     int                     `json:"latest_assoc_time,omitempty"`
-	LocalDNSRecord                      string                  `json:"local_dns_record,omitempty,omitempty"`
-	LocalDNSRecordEnabled               bool                    `json:"local_dns_record_enabled,omitempty"`
+	LocalDNSRecord                      string                  `json:"local_dns_record,omitempty"`
+	LocalDNSRecordEnabled               bool                    `json:"local_dns_record_enabled"`
 	Mac                                 string                  `json:"mac,omitempty"`
-	Mimo                                string                  `json:"mimo,omitempty,omitempty"`
-	Name                                string                  `json:"name,omitempty,omitempty"`
+	Mimo                                string                  `json:"mimo,omitempty"`
+	Name                                string                  `json:"name,omitempty"`
 	NetworkID                           string                  `json:"network_id,omitempty"`
 	NetworkName                         string                  `json:"network_name,omitempty"`
-	Noise                               int                     `json:"noise,omitempty,omitempty"`
+	Noise                               int                     `json:"noise,omitempty"`
 	Noted                               bool                    `json:"noted,omitempty"`
 	Oui                                 string                  `json:"oui,omitempty"`
 	PowersaveEnabled                    bool                    `json:"powersave_enabled,omitempty"`
@@ -61,15 +61,15 @@ type ClientStruct struct {
 	RxBytes                             int64                   `json:"rx_bytes,omitempty"`
 	RxBytesR                            int                     `json:"rx_bytes-r,omitempty"`
 	RxPackets                           int                     `json:"rx_packets,omitempty"`
-	RxRate                              int                     `json:"rx_rate,omitempty,omitempty"`
-	Signal                              int                     `json:"signal,omitempty,omitempty"`
+	RxRate                              int                     `json:"rx_rate,omitempty"`
+	Signal                              int                     `json:"signal,omitempty"`
 	SiteID                              string                  `json:"site_id,omitempty"`
 	Status                              string                  `json:"status,omitempty"`
 	TxBytes                             int                     `json:"tx_bytes,omitempty"`
 	TxBytesR                            int                     `json:"tx_bytes-r,omitempty"`
-	TxMcsIndex                          int                     `json:"tx_mcs_index,omitempty,omitempty"`
+	TxMcsIndex                          int                     `json:"tx_mcs_index,omitempty"`
 	TxPackets                           int                     `json:"tx_packets,omitempty"`
-	TxRate                              int                     `json:"tx_rate,omitempty,omitempty"`
+	TxRate                              int                     `json:"tx_rate,omitempty"`
 	Type                                string                  `json:"type,omitempty"`
 	UnifiDevice                         bool                    `json:"unifi_device,omitempty"`
 	UplinkMac                           string                  `json:"uplink_mac,omitempty"`
@@ -134,7 +134,7 @@ func ClientController_Active(c api.Client, site string) ([]ClientStruct, error) 
 }
 
 // ClientController_ActiveMac gets an active client by mac address
-func ClientController_ActiveMac(c api.Client, site string, mac string) (ClientStruct, error) {
+func ClientController_ActiveMac(c api.Client, site, mac string) (ClientStruct, error) {
 	url := fmt.Sprintf("%s/proxy/network/v2/api/site/%s/clients/active/%s", c.Host, site, mac)
 
 	// create request
@@ -154,7 +154,7 @@ func ClientController_ActiveMac(c api.Client, site string, mac string) (ClientSt
 }
 
 // ClientController_ClientPower gets the PoE information of a client (restricted to UniFi PoE devices that expose this information)
-func ClientController_ClientPower(c api.Client, site string, mac string) (ClientPowerStruct, error) {
+func ClientController_ClientPower(c api.Client, site, mac string) (ClientPowerStruct, error) {
 	url := fmt.Sprintf("%s/proxy/network/v2/api/site/%s/clients/%s/power", c.Host, site, mac)
 
 	// create request
@@ -176,7 +176,7 @@ func ClientController_ClientPower(c api.Client, site string, mac string) (Client
 // ClientController_Local gets a client by mac address, similar output to ClientController_Active, but for a specific device.
 // i don't really know how this is any different than ClientController_ActiveMac.
 // this could definitely use a better name
-func ClientController_Local(c api.Client, site string, mac string) (ClientStruct, error) {
+func ClientController_Local(c api.Client, site, mac string) (ClientStruct, error) {
 	url := fmt.Sprintf("%s/proxy/network/v2/api/site/%s/clients/local/%s", c.Host, site, mac)
 
 	// create request
