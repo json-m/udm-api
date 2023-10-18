@@ -15,46 +15,30 @@ import (
 
 type TrafficOverviewControllerStruct struct {
 	ClientUsageByApp []ClientUsageByAppStruct `json:"client_usage_by_app"`
-	TotalUsageByApp  []TotalUsageByAppStruct  `json:"total_usage_by_app"`
+	TotalUsageByApp  []UsageByAppStruct       `json:"total_usage_by_app"`
 }
 
 type ClientUsageByAppStruct struct {
 	Client struct {
-		Fingerprint struct {
-			ComputedDevID  int  `json:"computed_dev_id"`
-			ComputedEngine int  `json:"computed_engine"`
-			Confidence     int  `json:"confidence"`
-			DevCat         int  `json:"dev_cat"`
-			DevFamily      int  `json:"dev_family"`
-			DevID          int  `json:"dev_id"`
-			DevVendor      int  `json:"dev_vendor"`
-			HasOverride    bool `json:"has_override"`
-			OsName         int  `json:"os_name"`
-		} `json:"fingerprint"`
-		Hostname   string `json:"hostname"`
-		IsWired    bool   `json:"is_wired"`
-		Mac        string `json:"mac"`
-		Name       string `json:"name"`
-		Oui        string `json:"oui"`
-		WlanconfID string `json:"wlanconf_id"`
+		Fingerprint ClientFingerprintStruct `json:"fingerprint"`
+		Hostname    string                  `json:"hostname"`
+		IsWired     bool                    `json:"is_wired"`
+		Mac         string                  `json:"mac"`
+		Name        string                  `json:"name"`
+		Oui         string                  `json:"oui"`
+		WlanconfID  string                  `json:"wlanconf_id"`
 	} `json:"client,omitempty"`
-	UsageByApp []struct {
-		ActivitySeconds  int `json:"activity_seconds"`
-		Application      int `json:"application"`
-		BytesReceived    int `json:"bytes_received"`
-		BytesTransmitted int `json:"bytes_transmitted"`
-		Category         int `json:"category"`
-		TotalBytes       int `json:"total_bytes"`
-	} `json:"usage_by_app"`
+	UsageByApp []UsageByAppStruct `json:"usage_by_app"`
 }
 
-type TotalUsageByAppStruct struct {
-	Application      int   `json:"application"`
-	BytesReceived    int64 `json:"bytes_received"`
-	BytesTransmitted int64 `json:"bytes_transmitted"`
-	Category         int   `json:"category"`
-	ClientCount      int   `json:"client_count"`
-	TotalBytes       int64 `json:"total_bytes"`
+type UsageByAppStruct struct {
+	Application      int   `json:"application,omitempty"`
+	BytesReceived    int64 `json:"bytes_received,omitempty"`
+	BytesTransmitted int64 `json:"bytes_transmitted,omitempty"`
+	Category         int   `json:"category,omitempty"`
+	ClientCount      int   `json:"client_count,omitempty"`
+	TotalBytes       int64 `json:"total_bytes,omitempty"`
+	ActivitySeconds  int   `json:"activity_seconds,omitempty"`
 }
 
 type AppTrafficRateStruct struct {
